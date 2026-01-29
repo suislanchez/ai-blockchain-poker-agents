@@ -1,29 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X, Info, Github, Globe, Brain, Blocks, Gamepad2, Eye, Star } from 'lucide-react';
 
 export function ProjectInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Auto-show on first visit
-  useEffect(() => {
-    const hasSeenInfo = localStorage.getItem('ai-poker-arena-seen');
-    if (!hasSeenInfo) {
-      setIsOpen(true);
-    }
-  }, []);
-
-  const handleClose = () => {
-    setIsOpen(false);
-    localStorage.setItem('ai-poker-arena-seen', 'true');
-  };
-
   return (
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 right-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-3 rounded-full shadow-2xl hover:scale-105 transition-transform duration-200 z-50 animate-pulse"
+        className="fixed top-4 right-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-3 rounded-full shadow-2xl hover:scale-105 transition-transform duration-200 z-50"
         title="Project Information"
       >
         <Info className="w-6 h-6" />
@@ -48,7 +35,7 @@ export function ProjectInfo() {
                   <Github className="w-6 h-6" />
                 </a>
                 <button
-                  onClick={handleClose}
+                  onClick={() => setIsOpen(false)}
                   className="text-white hover:bg-white/20 p-2 rounded-full transition-colors"
                 >
                   <X className="w-6 h-6" />
